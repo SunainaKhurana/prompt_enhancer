@@ -6,10 +6,12 @@ st.title("📝 Prompt Engineer — General Prompt Enhancer")
 st.caption("Demo Mode - Learn how to structure better prompts!")
 
 
-st.subheader("Enter Role, Context, Task (RCT)")
-role = st.text_input("Role", value="a helpful assistant")
-context = st.text_area("Context", value="Audience: busy professional; Goal: clear and specific")
-task = st.text_area("Task", value="Rewrite my draft for clarity and ask 1 clarifying question")
+st.subheader("Enter Context, Constraint, Structure, Checkpoint, Review (CC-SC-R)")
+context = st.text_input("Context", value="Detailed context of the task")
+constraint = st.text_area("constraint", value="Mention all constraints to keep in mind")
+structure = st.text_area("structure", value="Define the structure of the output desired")
+checkpoint = st.text_area("checkpoint", value="Define the checks you want to put in the system")
+review = st.text_area("review", value="Reviews to be built into the system")
 
 
 st.subheader("Paste your rough prompt")
@@ -36,9 +38,11 @@ if st.button("Enhance Prompt"):
             "3) Specify output format (3 bullets, ≤12 words each)\n"
         )
         demo_output = (
-            f"ROLE: {role}\n"
             f"CONTEXT: {context}\n"
-            f"TASK: {task}\n\n"
+            f"CONSTRAINT: {Constraint}\n"
+            f"STRUCTURE: {Structure}\n"
+            f"CHECKPOINT {Checkpoint}\n"
+            f"REVIEW {REVIEW}\n\n"
             f"USER DRAFT:\n{draft}\n\n"
             "OUTPUT FORMAT:\n- 3 concise bullets\n- 1 clarifying question"
         )

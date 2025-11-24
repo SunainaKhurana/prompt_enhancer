@@ -1,4 +1,21 @@
 ﻿import streamlit as st
+
+from dotenv import load_dotenv
+import os
+from openai import OpenAI
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Get the API key from environment
+api_key = os.getenv("OPENAI_API_KEY")
+
+# Create OpenAI client with your key
+client = OpenAI(api_key=api_key)
+
+# Now you can use the client to make API calls
+response = client.chat.completions.create(model="gpt-4o-mini", messages=[{"role": "user", "content": "enhance the prompt"}])
+
 st.set_page_config(page_title="Prompt Enhancer", page_icon="📝")
 st.title("📝 Prompt Engineer — General Prompt Enhancer")
 

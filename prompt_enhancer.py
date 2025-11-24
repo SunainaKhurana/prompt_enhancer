@@ -39,10 +39,10 @@ if st.button("Enhance Prompt"):
         )
         demo_output = (
             f"CONTEXT: {context}\n"
-            f"CONSTRAINT: {Constraint}\n"
-            f"STRUCTURE: {Structure}\n"
-            f"CHECKPOINT {Checkpoint}\n"
-            f"REVIEW {REVIEW}\n\n"
+            f"CONSTRAINT: {constraint}\n"
+            f"STRUCTURE: {structure}\n"
+            f"CHECKPOINT: {checkpoint}\n"
+            f"REVIEW: {review}\n\n"
             f"USER DRAFT:\n{draft}\n\n"
             "OUTPUT FORMAT:\n- 3 concise bullets\n- 1 clarifying question"
         )

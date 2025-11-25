@@ -3,7 +3,7 @@ from openai import OpenAI
 
 
 # Function to enhance the prompt
-def enhance_prompt(api_key, role, context, task):
+def enhance_prompt(api_key, context, constraint, structure, checkpoint, review):
     instruction = (
         "Given the following Context, Constraint, Structure, Checkpoint and Review, generate an enhanced, structured prompt. "
         "The prompt must: "

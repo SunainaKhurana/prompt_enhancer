@@ -51,7 +51,7 @@ def main():
     if st.button("Enhance Prompt"):
         if not api_key:
             st.warning("Please enter your OpenAI API key in the sidebar.")
-        elif role and context and task:
+        elif context and constraint and structure and checkpoint and review:
             with st.spinner("Enhancing your prompt..."):
                 enhanced_prompt = enhance_prompt(api_key, context, constraint, structure, checkpoint, review)
 

@@ -5,14 +5,14 @@ from openai import OpenAI
 # Function to enhance the prompt
 def enhance_prompt(api_key, role, context, task):
     instruction = (
-        "Given the following Role, Context, and Task, generate an enhanced, structured prompt. "
+        "Given the following Context, Constraint, Structure, Checkpoint and Review, generate an enhanced, structured prompt. "
         "The prompt must: "
         "1. Improve clarity and completeness. "
         "2. Request GPT to clarify assumptions before responding. "
         "3. Specify an expected output format (e.g., bullet points, JSON, structured text)."
     )
 
-    user_input = f"Role: {role}\nContext: {context}\nTask: {task}"
+    user_input = f"Context: {context}\n Constraint: {constraint}\n Structure: {structure}\n Checkpoint: {checkpoint}\n Review: {review}"
     final_prompt = f"{instruction}\n\n{user_input}"
 
     try:
@@ -41,16 +41,19 @@ def main():
     st.sidebar.header("Settings")
     api_key = st.sidebar.text_input("Enter your OpenAI API Key", type="password")
 
-    role = st.text_input("Role", "")
-    context = st.text_area("Context", "")
-    task = st.text_area("Task", "")
+    context = st.text_input("context", "")
+    constraint = st.text_area("constraint", "")
+    structure = st.text_area("structure", "")
+    checkpoint = st.text_area("checkpoint", "")
+    review = st.text_area("review", "")
+
 
     if st.button("Enhance Prompt"):
         if not api_key:
             st.warning("Please enter your OpenAI API key in the sidebar.")
         elif role and context and task:
             with st.spinner("Enhancing your prompt..."):
-                enhanced_prompt = enhance_prompt(api_key, role, context, task)
+                enhanced_prompt = enhance_prompt(api_key, context, constraint, structure, checkpoint, review)
 
                 if enhanced_prompt.startswith("Error:"):
                     st.error(enhanced_prompt)
